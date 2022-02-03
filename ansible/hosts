@@ -1,5 +1,8 @@
 # Define all machines and then group them
-vagrant ansible_ssh_host=127.0.0.1 ansible_ssh_port=2222 ansible_user=vagrant ansible_ssh_private_key_file=./.vagrant_private_key
+#vagrant ansible_ssh_host=127.0.0.1 ansible_ssh_port=2222 ansible_user=vagrant ansible_ssh_private_key_file=./.vagrant_private_key
+training-deploy-project ansible_ssh_host=secret_ip ansible_ssh_port=22 ansible_user=root ansible_ssh_private_key_file=~/.ssh/id_rsa
 
 [all]
-vagrant
+training-deploy-project
+
+
