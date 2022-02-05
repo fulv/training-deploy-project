@@ -43,13 +43,13 @@ setup: bin/ansible ## Create VirtualEnv and install Ansible via Pip
 	@echo "$(GREEN)==> Ansible available at ./bin/ansible $(RESET)"
 
 .PHONY: vagrant-provision
-vagrant-destroy: bin/ansible ## Provision Vagrant box 
+vagrant-destroy: bin/ansible ## Provision Vagrant box
 	@echo "$(GREEN)==> Provision Vagrant box $(RESET)"
 	sudo vagrant destroy
 	sudo rm .vagrant_private_key .vagrant
 
 .PHONY: vagrant-provision
-vagrant-provision: bin/ansible ## Provision Vagrant box 
+vagrant-provision: bin/ansible ## Provision Vagrant box
 	@echo "$(GREEN)==> Provision Vagrant box $(RESET)"
 	sudo vagrant up
 	sudo cp .vagrant/machines/default/virtualbox/private_key .vagrant_private_key
@@ -63,8 +63,8 @@ playbook-setup: bin/ansible ## Run playbook
 
 .PHONY: compose-pull
 compose-pull: ## Run Compose pull
-	docker-compose --context vagrant --project-directory project pull
+	docker-compose --context training-deploy-project --project-directory project pull
 
 .PHONY: compose-up
 compose-up: ## Run Compose up
-	docker-compose --context vagrant --project-directory project up -d
+	docker-compose --context training-deploy-project --project-directory project up -d

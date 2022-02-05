@@ -16,7 +16,7 @@ RESET=`tput sgr0`
 YELLOW=`tput setaf 3`
 
 DOCKER_HUB_USER=fulv
-IMAGE_NAME=${DOCKER_HUB_USER}/project-frontend:latest
+IMAGE_NAME=${DOCKER_HUB_USER}/project-frontend:14.8.1
 
 
 # Add the following 'help' target to your Makefile
