@@ -1,4 +1,4 @@
-FROM plone/plone-backend:6.0.0a2
+FROM plone/plone-backend:6.0.0a3
 
 # Add local code
 COPY . ./

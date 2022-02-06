@@ -68,3 +68,7 @@ compose-pull: ## Run Compose pull
 .PHONY: compose-up
 compose-up: ## Run Compose up
 	docker-compose --context training-deploy-project --project-directory project up -d
+
+.PHONE: docker-context
+docker-context: ## Set up docker context
+	docker context create training-deploy-project --description "Plone Deployment training" --docker "host=ssh://plone@training-deploy-project:2222"
