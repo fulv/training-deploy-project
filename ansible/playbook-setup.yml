@@ -6,7 +6,6 @@
   - name: Install Packages
     ansible.builtin.apt:
       name:
-        - nginx
         - docker.io
         - python3-pip
       state: present
@@ -52,13 +51,32 @@
       group: plone
       mode: 0640
 
-  - name: Copy configuration
+  - name: Copy nginx configuration
     ansible.builtin.copy:
-      src: files/nginx/default
-      dest: /etc/nginx/sites-enabled/default
-      mode: '0644'
+      src: ./nginx.yml
+      dest: /home/plone/project/nginx.yml
+      owner: plone
+      group: plone
+      mode: 0640
 
-  - name: restart nginx
-    service:
-      name: nginx
-      state: reloaded
+  - name: Copy nginx certs
+    ansible.builtin.copy:
+      src: ./nginx/certs/
+      dest: /home/plone/project/nginx/certs/
+      owner: plone
+      group: plone
+      mode: 0640
+
+  - name: Copy nginx dockerfile
+    ansible.builtin.copy:
+      src: ./Dockerfile-nginx
+      dest: /home/plone/project/Dockerfile-nginx
+      owner: plone
+      group: plone
+      mode: 0640
+
+  - name: Copy nginx configuration
+    ansible.builtin.copy:
+      src: files/nginx/default.conf
+      dest: /home/plone/project/default.conf
+      mode: '0644'
