@@ -53,30 +53,12 @@
 
   - name: Copy nginx configuration
     ansible.builtin.copy:
-      src: ./nginx.yml
-      dest: /home/plone/project/nginx.yml
-      owner: plone
-      group: plone
-      mode: 0640
-
-  - name: Copy nginx certs
-    ansible.builtin.copy:
-      src: ./nginx/certs/
-      dest: /home/plone/project/nginx/certs/
-      owner: plone
-      group: plone
-      mode: 0640
-
-  - name: Copy nginx dockerfile
-    ansible.builtin.copy:
-      src: ./Dockerfile-nginx
-      dest: /home/plone/project/Dockerfile-nginx
-      owner: plone
-      group: plone
-      mode: 0640
-
-  - name: Copy nginx configuration
-    ansible.builtin.copy:
       src: files/nginx/default.conf
       dest: /home/plone/project/default.conf
+      mode: '0644'
+
+  - name: Copy env file
+    ansible.builtin.copy:
+      src: ./.env
+      dest: /home/plone/project/.env
       mode: '0644'
