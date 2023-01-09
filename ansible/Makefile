@@ -63,15 +63,15 @@ playbook-setup: bin/ansible ## Run playbook
 
 .PHONY: compose-pull
 compose-pull: ## Run Compose pull
-	docker-compose --context training-deploy-project --project-directory /home/plone/project pull
+	docker-compose --context training-deploy-project --project-directory $(PWD) pull
 
 .PHONY: compose-up
 compose-up: ## Run Compose up
-	docker-compose --context training-deploy-project --project-directory /home/plone/project up -d
+	docker-compose --context training-deploy-project --project-directory $(PWD) up -d
 
 .PHONY: compose-down
 compose-down: ## Run Compose Down
-	docker-compose --context training-deploy-project --project-directory /home/plone/project down -v
+	docker-compose --context training-deploy-project --project-directory $(PWD) down -v
 
 .PHONE: docker-context
 docker-context: ## Set up docker context
